@@ -1,0 +1,343 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled4.ipynb",
+      "provenance": [],
+      "collapsed_sections": [],
+      "authorship_tag": "ABX9TyMTgUYWdmWe/fvewiQ6ALgt",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/AriCar98/Ciencia-De-Datos-/blob/main/Ejercicio%20Integrador%201\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "O4Vp0Pha2cFl"
+      },
+      "source": [
+        "# Ejercicio 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "y-FAfjN02tlN"
+      },
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "Lista_pagos = [100, 300, 400, 500, 6000, 8000, 2012, 1231, 23, 20, 100, 100, 4000, 300, 500, 500, 600, 200, 200, 8000]"
+      ],
+      "execution_count": 4,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "K4XN-EwX2mDA"
+      },
+      "source": [
+        "Punto 1\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "LeC11iyt2RBT",
+        "outputId": "e8514fcc-9439-4fe8-bd0c-bd272153860b"
+      },
+      "source": [
+        "cant_pagos = len(Lista_pagos)\n",
+        "print('Cantidad de pagos realizados: ', cant_pagos)"
+      ],
+      "execution_count": 25,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Cantidad de pagos realizados:  20\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "LS-cFTtG3dq0"
+      },
+      "source": [
+        "Punto 2"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ZzEwCJi73f7V",
+        "outputId": "173dc637-8901-49dd-e224-89f107eab2b4"
+      },
+      "source": [
+        "#primera forma:\n",
+        "valores_unicos = []\n",
+        "[valores_unicos.append(pago) for pago in Lista_pagos if pago not in valores_unicos]\n",
+        "print(valores_unicos)\n",
+        "\n",
+        "#segunda forma\n",
+        "valores_unicos = list(set(Lista_pagos))\n",
+        "print(valores_unicos)"
+      ],
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[100, 300, 400, 500, 6000, 8000, 2012, 1231, 23, 20, 4000, 600, 200]\n",
+            "[8000, 4000, 100, 200, 300, 1231, 400, 6000, 500, 20, 23, 600, 2012]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "kv3M3rWA6a6a"
+      },
+      "source": [
+        "Punto 3"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2o0PKMbJ6cjJ",
+        "outputId": "38f6471a-bcb1-4c22-8208-95bb4f818023"
+      },
+      "source": [
+        "#ordenar lista pagos únicos\n",
+        "valores_unicos.sort()\n",
+        "print(valores_unicos)\n",
+        "\n",
+        "#ordenar lista pagos completa\n",
+        "Lista_pagos.sort()\n",
+        "print(Lista_pagos)"
+      ],
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[20, 23, 100, 200, 300, 400, 500, 600, 1231, 2012, 4000, 6000, 8000]\n",
+            "[20, 23, 100, 100, 100, 200, 200, 300, 300, 400, 500, 500, 500, 600, 1231, 2012, 4000, 6000, 8000, 8000]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "yCw8JwMA7K9p"
+      },
+      "source": [
+        "Punto 4"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "kOOmtHA07L9I",
+        "outputId": "27fdd37e-d0cf-4aa9-d520-97601194012b"
+      },
+      "source": [
+        "print('Mínimo: ', min(valores_unicos))\n",
+        "print('Máximo: ', max(valores_unicos))"
+      ],
+      "execution_count": 24,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Mínimo:  20\n",
+            "Máximo:  8000\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "WQE-7KlN7dt1"
+      },
+      "source": [
+        "Punto 5"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "OcmaszJV7gVa",
+        "outputId": "a8e107fe-37b2-4a98-ff02-175b00361cb5"
+      },
+      "source": [
+        "#primera forma:\n",
+        "comision = []\n",
+        "[comision.append(pago*0.012) for pago in Lista_pagos]\n",
+        "print(comision)\n"
+      ],
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[0.24, 0.276, 1.2, 1.2, 1.2, 2.4, 2.4, 3.6, 3.6, 4.8, 6.0, 6.0, 6.0, 7.2, 14.772, 24.144000000000002, 48.0, 72.0, 96.0, 96.0]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "D_7s-xAF9mbG"
+      },
+      "source": [
+        "Punto 6"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4YuRT3xX9n6d",
+        "outputId": "de3c0128-6319-40a6-c9bc-e2ed277c9a0e"
+      },
+      "source": [
+        "comision_pagada = []\n",
+        "\n",
+        "for pago_comision in comision:\n",
+        "  if pago_comision > 8:\n",
+        "    comision_pagada.append(pago_comision)\n",
+        "  else:\n",
+        "    comision_pagada.append(8)\n",
+        "\n",
+        "print(comision_pagada)\n"
+      ],
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 14.772, 24.144000000000002, 48.0, 72.0, 96.0, 96.0]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "9z_f5HQnYqeQ"
+      },
+      "source": [
+        "Punto 7"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ejVjXOdiYrh0",
+        "outputId": "71658c5f-bed6-4530-ae39-38e72b5032ef"
+      },
+      "source": [
+        "print('Cantidad de comisiones pagadas 8 pesos: ', comision_pagada.count(8))"
+      ],
+      "execution_count": 23,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Cantidad de comisiones pagadas 8 pesos:  14\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "MOWRQLmSZYKR"
+      },
+      "source": [
+        "Punto 8"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2lpzaAo7ZZGq",
+        "outputId": "2b42abde-c30f-4de7-dd71-ed5f7ab31e69"
+      },
+      "source": [
+        "#pagado en comisiones con tope:\n",
+        "print('Pagado en comisiones con tope: ',sum(comision_pagada,0))\n",
+        "#comisiones sin tope:\n",
+        "print('Total comisiones sin tope: ',sum(comision,0))"
+      ],
+      "execution_count": 22,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Pagado en comisiones con tope:  462.916\n",
+            "Total comisiones sin tope:  397.032\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
